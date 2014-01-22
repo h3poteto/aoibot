@@ -23,25 +23,25 @@ set :output, {:error => 'log/crontab.err.log', :standard => 'log/crontab.log'}
 
 set :environment, :production
 
-every 1.day, :at => '23:55' do
+every 1.day, :at => '23:56' do
   rake "youtube:clear"
 end
-every 1.day, :at => '23:57' do
+every 1.day, :at => '23:58' do
   rake "youtube:new"
 end
 
-every 1.day, :at => '0:37' do
+every 1.day, :at => '0:35' do
   rake "youtube:popular"
 end
 
-every 1.day, :at => '18:01' do
+every 1.day, :at => '17:58' do
   rake "youtube:clear"
 end
-every 1.day, :at => '18:03' do
+every 1.day, :at => '17:59' do
   rake "youtube:new"
 end
 
-every 1.day, :at => '18:05' do
+every 1.day, :at => '18:14' do
   rake "youtube:popular"
 end
 
