@@ -1,6 +1,5 @@
 # coding: utf-8
 
-require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
@@ -8,7 +7,7 @@ require 'open-uri'
 namespace :youtube do
   URL = 'http://gdata.youtube.com/feeds/api/videos?vq='
   keywords = URI.encode('悠木碧')
-  @aoi_word = ['悠木碧']
+  @aoi_word = ['悠木','碧']
   @except_word = ['弾いてみた','やってみた','踊ってみた']
   @searchwords = ['悠木碧']
 

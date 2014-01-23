@@ -11,7 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120163047) do
+ActiveRecord::Schema.define(:version => 20140122170433) do
+
+  create_table "niconico_movies", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
+    t.integer  "priority"
+    t.boolean  "disabled",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "niconico_populars", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "description"
+    t.integer  "priority"
+    t.boolean  "used",        :default => false
+    t.boolean  "disabled",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "today_niconicos", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
+    t.integer  "priority"
+    t.boolean  "used",        :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
 
   create_table "today_youtubes", :force => true do |t|
     t.string   "title"
