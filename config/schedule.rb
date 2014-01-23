@@ -26,12 +26,25 @@ set :environment, :production
 every 1.day, :at => '23:56' do
   rake "youtube:clear"
 end
+
+every 1.day, :at => '23:53' do
+  rake "niconico:clear"
+end
+
 every 1.day, :at => '23:58' do
   rake "youtube:new"
 end
 
+every 1.day, :at => '23:59' do
+  rake "niconico:new"
+end
+
 every 1.day, :at => '0:35' do
   rake "youtube:popular"
+end
+
+every 1.day, :at => '0:41' do
+  rake "niconico:popular"
 end
 
 every 1.day, :at => '17:58' do
