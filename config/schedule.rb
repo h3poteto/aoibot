@@ -23,6 +23,19 @@ set :output, {:error => 'log/crontab.err.log', :standard => 'log/crontab.log'}
 
 set :environment, :production
 
+
+every '14 * * * *' do
+  rake "twitter:normal"
+end
+
+every '39 18-23 * * *' do
+  rake "twitter:new"
+end
+
+every '11 * * * *' do
+  rake "twitter:follower"
+end
+
 every 1.day, :at => '23:56' do
   rake "youtube:clear"
 end
