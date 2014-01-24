@@ -18,7 +18,6 @@ namespace :twitter do
     # つぶやき
     movie_info = "【" + movies.title + "】"
     popular_tweet = PopularSerif.all.sample.word + " \n"
-    debugger
     if update( popular_tweet + movie_info, movies.url)
       movies.used = true
       movies.save
