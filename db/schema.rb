@@ -11,12 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124164916) do
+ActiveRecord::Schema.define(:version => 20140125045023) do
+
+  create_table "already_serifs", :force => true do |t|
+    t.string   "word"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "new_serifs", :force => true do |t|
     t.string   "word"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "niconico_fav_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "niconico_movie_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "niconico_movies", :force => true do |t|
@@ -38,6 +51,13 @@ ActiveRecord::Schema.define(:version => 20140124164916) do
     t.boolean  "disabled",    :default => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "niconico_rt_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "niconico_movie_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "popular_serifs", :force => true do |t|
@@ -79,6 +99,20 @@ ActiveRecord::Schema.define(:version => 20140124164916) do
     t.datetime "updated_at",                     :null => false
   end
 
+  create_table "users", :force => true do |t|
+    t.integer  "twitter_id",  :limit => 8
+    t.string   "screen_name"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "youtube_fav_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "youtube_movie_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
   create_table "youtube_movies", :force => true do |t|
     t.string   "title"
     t.string   "url"
@@ -98,6 +132,13 @@ ActiveRecord::Schema.define(:version => 20140124164916) do
     t.boolean  "disabled",    :default => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "youtube_rt_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "youtube_movie_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end
