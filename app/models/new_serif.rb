@@ -1,3 +1,3 @@
-class NewSerif < ActiveRecord::Base
+class NewSerif < Serif
   attr_accessible :word
 end

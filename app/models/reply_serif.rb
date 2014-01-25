@@ -1,3 +1,3 @@
-class ReplySerif < ActiveRecord::Base
+class ReplySerif < Serif
   attr_accessible :word
 end
