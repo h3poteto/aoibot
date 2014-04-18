@@ -1,5 +1,5 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
-# 
+#
 # Install the MYSQL driver
 #   gem install mysql2
 #
@@ -14,9 +14,9 @@ development:
   reconnect: false
   database: <%= ENV["DB_AOI_DEV_NAME"] %>
   pool: 5
-  username: <%= ENV["DB_AOI_DEV_USER"] %>
-  password: <%= ENV["DB_AOI_DEV_PASS"] %>
-  socket: <%= ENV["DB_AOI_DEV_SOCK"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  socket: <%= ENV["DB_SOCK"] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,9 +27,9 @@ test:
   reconnect: false
   database: <%= ENV["DB_AOI_TEST_NAME"] %>
   pool: 5
-  username: <%= ENV["DB_AOI_TEST_USER"] %>
-  password: <%= ENV["DB_AOI_TEST_PASS"] %>
-  socket: <%= ENV["DB_AOI_TEST_SOCK"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  socket: <%= ENV["DB_SOCK"] %>
 
 production:
   adapter: mysql2
@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: <%= ENV["DB_AOI_PRO_NAME"] %>
   pool: 5
-  username: <%= ENV["DB_AOI_PRO_USER"] %>
-  password: <%= ENV["DB_AOI_PRO_PASS"] %>
-  socket: <%= ENV["DB_AOI_PRO_SOCK"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  socket: <%= ENV["DB_SOCK"] %>

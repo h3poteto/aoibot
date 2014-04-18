@@ -21,3 +21,5 @@ config/environments/*.local.yml
 vender/ruby/
 vender/cache/
 public/
+# Ignore application configuration
+/config/application.yml
