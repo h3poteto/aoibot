@@ -1,8 +1,5 @@
 # coding: utf-8
 
-require 'rubygems'
-require 'tweetstream'
-
 namespace :userstream do
 
   desc "reply userstream"
@@ -10,7 +7,7 @@ namespace :userstream do
     setting_tweetstream
     setting_twitter
     client = TweetStream::Client.new
-    
+
     ## for fav event
     client.on_event(:favorite) do |event|
       if event[:event] == "favorite"
@@ -143,7 +140,7 @@ namespace :userstream do
         else
           user = user.first
         end
-        
+
         # find url
         expanded_urls = []
         status.urls.each do |url|
@@ -190,12 +187,13 @@ namespace :userstream do
       return false
     end
     uri = URI(url)
+    uri.scheme = "https"
     begin
       doc = Nokogiri::XML(uri.read)
     rescue
       return false
     end
-    
+
     if doc.search('title').text == "YouTube"
       return false
     else

@@ -1,7 +1,4 @@
 # coding: utf-8
-
-require 'rubygems'
-require 'twitter'
 require 'date'
 require 'open-uri'
 
@@ -23,7 +20,7 @@ namespace :twitter do
       movies.save
     end
   end
-  
+
   desc "new aoi movie"
   task :new => :environment do
     setting_twitter
@@ -31,7 +28,7 @@ namespace :twitter do
     if movies == nil
       movies = TodayNiconico.where(:used => false).sample
     end
-    
+
     next if movies.blank?
     next if !confirm_db(movies.url)
     # つぶやき
@@ -57,7 +54,7 @@ namespace :twitter do
   end
 
   private
-  
+
   def setting_twitter
     Twitter.configure do |config|
       config.consumer_key       = Settings.twitter.consumer_key
@@ -86,12 +83,13 @@ namespace :twitter do
       return false
     end
     uri = URI(url)
+    uri.scheme = "https"
     begin
       doc = Nokogiri::XML(uri.read)
     rescue
       return false
     end
-    
+
     if doc.search('title').text == "YouTube"
       return false
     else
