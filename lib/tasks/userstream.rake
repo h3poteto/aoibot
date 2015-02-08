@@ -226,9 +226,12 @@ namespace :userstream do
     if url.include?("youtube.com/watch?")
       if confirm_youtube(url)
         ## 問題なし
+        youtube = YoutubeMovie.where(:url => url).first
+        youtube.update_attributes!(:disabled => false)
+        youtube.save
         return "youtube"
       else
-        ## DBから探し出しdisabled => false
+        ## DBから探し出しdisabled => true
         youtube = YoutubeMovie.where(:url => url).first
         youtube.update_attributes!(:disabled => true)
         youtube.save
@@ -237,9 +240,12 @@ namespace :userstream do
     elsif url.include?("nicovideo.jp/watch")
       if confirm_niconico(url)
         ## 問題なし
+        niconico = NiconicoMovie.where(:url => url).first
+        niconico.update_attributes!(:disabled => false)
+        niconico.save
         return "niconico"
       else
-        ## DBから探し出しdisabled => false
+        ## DBから探し出しdisabled => true
         niconico = NiconicoMovie.where(:url => url).first
         niconico.update_attributes!(:disabled => false)
         niconico.save
