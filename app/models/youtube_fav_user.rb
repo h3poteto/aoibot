@@ -5,11 +5,11 @@ class YoutubeFavUser < ActiveRecord::Base
   def self.recent(period=1.week.ago)
     to = Date.today
     if period.present?
-      new_rt = self.where(created_at: period...to).order("created_at DESC")
+      new_fav = self.where(created_at: period...to).order("created_at DESC")
     else
-      new_rt = self.order("created_at DESC").all
+      new_fav = self.order("created_at DESC").all
     end
-    movie_ids = new_rt.map{|r| r.youtube_movie_id }
+    movie_ids = new_fav.map{|r| r.youtube_movie_id }
     movie_ids.uniq!
     count=[]
     movie_ids.each do |id|
@@ -28,4 +28,3 @@ class YoutubeFavUser < ActiveRecord::Base
     return fav_movie.count
   end
 end
-

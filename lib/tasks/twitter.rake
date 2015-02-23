@@ -1,6 +1,4 @@
 # coding: utf-8
-require 'date'
-require 'open-uri'
 
 namespace :twitter do
   desc "normal tweet"
@@ -44,23 +42,23 @@ namespace :twitter do
   desc "follower"
   task :follower => :environment do
     setting_twitter
-    follower = Twitter.follower_ids().ids
-    friend = Twitter.friend_ids().ids
-    outgoing = Twitter.friendships_outgoing().ids
+    follower = @client.follower_ids().ids
+    friend = @client.friend_ids().ids
+    outgoing = @client.friendships_outgoing().ids
     fan = follower - friend - outgoing
     fan.each do |f|
-      Twitter.follow(f)
+      @client.follow(f)
     end
   end
 
   private
 
   def setting_twitter
-    Twitter.configure do |config|
+    @client = Twitter::REST::Client.new do |config|
       config.consumer_key       = Settings.twitter.consumer_key
       config.consumer_secret    = Settings.twitter.consumer_secret
-      config.oauth_token        = Settings.twitter.oauth_token
-      config.oauth_token_secret = Settings.twitter.oauth_token_secret
+      config.access_token        = Settings.twitter.oauth_token
+      config.access_token_secret = Settings.twitter.oauth_token_secret
     end
   end
   def update(tweet, url)
@@ -71,7 +69,7 @@ namespace :twitter do
         tweet += url
       end
       tweet = (tweet.length > 140) ? tweet[0..139].to_s : tweet
-      Twitter.update(tweet.chomp)
+      @client.update(tweet.chomp)
     rescue => e
       Rails.logger.error "<<twitter.rake::tweet.update ERROR : " + e.message + ">>"
       return false

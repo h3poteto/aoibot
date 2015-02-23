@@ -45,7 +45,7 @@ namespace :youtube do
       end
     end
   end
-  
+
   desc "popular youtube movie get"
   task :popular => :environment do
     options = '&orderby=rating&time=all_time'

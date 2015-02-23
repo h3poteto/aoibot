@@ -1,6 +1,6 @@
 # coding: utf-8
 
-namespace :userstream do
+namespace :aoistream do
 
   desc "reply userstream"
   task :reply => :environment do
@@ -8,6 +8,9 @@ namespace :userstream do
     setting_twitter
     client = TweetStream::Client.new
 
+    client.on_error do |message|
+      puts message
+    end
     ## for fav event
     client.on_event(:favorite) do |event|
       if event[:event] == "favorite"
@@ -175,11 +178,11 @@ namespace :userstream do
     end
   end
   def setting_twitter
-    Twitter.configure do |config|
+    @client = Twitter::REST::Client.new do |config|
       config.consumer_key       = Settings.twitter.consumer_key
       config.consumer_secret    = Settings.twitter.consumer_secret
-      config.oauth_token        = Settings.twitter.oauth_token
-      config.oauth_token_secret = Settings.twitter.oauth_token_secret
+      config.access_token        = Settings.twitter.oauth_token
+      config.access_token_secret = Settings.twitter.oauth_token_secret
     end
   end
   def confirm_youtube(url)
