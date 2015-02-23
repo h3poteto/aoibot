@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,14 +11,12 @@ gem 'mysql2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 end
 gem 'therubyracer', :platforms => :ruby
-gem 'less-rails-bootstrap', "2.3.3"
-gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
@@ -36,28 +34,26 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
- gem 'debugger'
- gem 'rake'
  gem 'twitter'
  gem 'rails_config'
  gem 'nokogiri'
  gem 'whenever', :require => false
  gem 'url_expander'
  gem 'tweetstream'
- gem 'kaminari'
- gem 'devise','>= 2.1.2'
- gem 'ransack'
- gem 'bootstrap_helper'
  gem 'i18n_generators'
- gem 'gon'
  gem 'figaro'
+ gem 'pry-byebug'
+ gem 'pry-rails'
+ gem 'pry-doc'
+ gem 'pry-stack_explorer'
 
 group :test do
- gem "shoulda-matchers"
+  gem "shoulda-matchers", require: false
 end
 
 group :development, :test do
  gem 'rspec-rails'
  gem 'rspec'
  gem 'rspec-mocks'
+ gem 'spring'
 end
