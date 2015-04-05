@@ -22,7 +22,7 @@
 set :output, {:error => 'log/crontab.err.log', :standard => 'log/crontab.log'}
 
 set :environment, :production
-
+env :PATH, ENV['PATH']
 
 every '14 * * * *' do
   rake "twitter:normal"
@@ -70,4 +70,3 @@ end
 every 1.day, :at => '18:14' do
   rake "youtube:popular"
 end
-
