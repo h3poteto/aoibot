@@ -35,6 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  host: <%= ENV["DB_AOI_PRO_NAME"] %>
+  port: <%= ENV["DB_AOI_PRO_PORT"] %>
   database: <%= ENV["DB_AOI_PRO_NAME"] || "aoibot_production" %>
   pool: 5
   username: <%= ENV["DB_AOI_PRO_USER"] %>
