@@ -28,7 +28,7 @@ every '14 * * * *' do
   rake "twitter:normal"
 end
 
-every '39 18-23 * * *' do
+every '39 9-14 * * *' do
   rake "twitter:new"
 end
 
@@ -36,37 +36,37 @@ every '11 * * * *' do
   rake "twitter:follower"
 end
 
-every 1.day, :at => '23:56' do
+every 1.day, :at => '14:56' do
   rake "youtube:clear"
 end
 
-every 1.day, :at => '23:53' do
+every 1.day, :at => '14:53' do
   rake "niconico:clear"
 end
 
-every 1.day, :at => '23:58' do
+every 1.day, :at => '14:58' do
   rake "youtube:new"
 end
 
-every 1.day, :at => '23:59' do
+every 1.day, :at => '14:59' do
   rake "niconico:new"
 end
 
-every 1.day, :at => '0:35' do
+every 1.day, :at => '15:35' do
   rake "youtube:popular"
 end
 
-every 1.day, :at => '0:41' do
+every 1.day, :at => '15:41' do
   rake "niconico:popular"
 end
 
-every 1.day, :at => '17:58' do
+every 1.day, :at => '8:58' do
   rake "youtube:clear"
 end
-every 1.day, :at => '17:59' do
+every 1.day, :at => '8:59' do
   rake "youtube:new"
 end
 
-every 1.day, :at => '18:14' do
+every 1.day, :at => '9:14' do
   rake "youtube:popular"
 end
