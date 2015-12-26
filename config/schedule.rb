@@ -70,3 +70,8 @@ end
 every 1.day, :at => '9:14' do
   rake "youtube:popular"
 end
+
+
+every '*/5 * * * *' do
+  command "cd /srv/www/aoibot && if [ ! -e tmp/pids/userstream.pid ] || ! ps $(cat tmp/pids/userstream.pid) ; then bundle exec rake aoistream:reply RAILS_ENV=production ; fi"
+end
