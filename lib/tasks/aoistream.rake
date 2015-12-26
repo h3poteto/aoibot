@@ -4,6 +4,11 @@ namespace :aoistream do
 
   desc "reply userstream"
   task :reply => :environment do
+    pid_file = "#{Rails.root}/tmp/pids/userstream.pid"
+    File.write(pid_file, $$)
+    at_exit { File.delete(pid_file) }
+    start_time = Time.current
+
     setting_tweetstream
     setting_twitter
     client = TweetStream::Client.new
@@ -162,6 +167,11 @@ namespace :aoistream do
             movie_object.save!
           end
         end
+      end
+      ## 時間が過ぎたらプロセスを殺す
+      end_time = start_time + 1.day
+      if Time.current > end_time
+        exit
       end
     end
   end
